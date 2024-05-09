@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Пользователи</h2>
+		<div class="navigation">
+			<a href="/">Назад</a>
+		</div>
+	</header>
+	
+	<div class="wrapper">
+	
+		<main>
+			<table>
+		        <tr>
+		            <th class="center-align">Id</th>
+		            <th>Имя</th>
+		            <th>Email</th>
+		            <th>Статус</th>
+		            <th>Роль</th>
+		            <th>
+						<a href="/users/add" class="pressed-button">Добавить</a>
+					</th>
+		        </tr>
+		        
+		        <tr th:each="user : ${users}">
+		            <td th:text="${user.id}" class="center-align">
+					<td th:text="${user.username}">
+					<td th:text="${user.email}">
+					<td th:text="${user.status}">
+					
+					<td>
+						<div  th:each="assignment : ${assignments}">
+		 					<p th:if="${assignment.user.getId() == user.id}" th:text="${assignment.role.getNameRole()}"></p>
+						</div >
+					</td>
+		            
+					<td style="width: 10px;" class="center-align">
+						<form method="POST" th:action="@{/users}" th:value="${user}" class="edit-form">
+						
+							<a th:href="@{/users/edit(id=${user.id})}">
+								<img th:src="@{/images/edit.png}" class="imgSize">
+							</a>
+							
+							<input name="id" type="hidden" th:value="${user.id}">
+							
+							<button type="submit" class="transparent-button">
+								<img th:src="@{/images/delete.png}" class="imgSize">
+							</button>
+							
+						</form>
+					</td>
+					
+		        </tr>
+		    </table>
+		</main>
+	
+		<footer>
+	        <div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+	
+	 </div>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Назначения ролей</h2>
+		<div class="navigation">
+			<a href="/">Назад</a>
+		</div>
+	</header>
+	
+	<div class="wrapper">
+	
+		<main>
+			<table>
+		        <tr>
+		            <th class="center-align">Id</th>
+		            <th>Пользователь</th>
+		            <th>Роль</th>
+		            <th>Дата создания</th>
+		            <th>
+						<a href="/assignments/add" class="pressed-button">Добавить</a>
+					</th>
+		        </tr>
+		        
+		        <tr th:each="assignment : ${assignments}">
+		            <td th:text="${assignment.id}" class="center-align">
+		            
+					<td th:text="${assignment.user.getUsername()}">
+					<td th:text="${assignment.role.getNameRole()}">
+					
+					<td th:text="${#dates.format(assignment.dateCreate, 'dd MMMM yyyy')}"></td>
+	
+					<td style="width: 10px;" class="center-align">
+					<form method="POST" th:action="@{/assignments}" th:value="${assignment}" class="edit-form">
+						
+							<a th:href="@{/assignments/edit(id=${assignment.id})}">
+								<img th:src="@{/images/edit.png}" class="imgSize">
+							</a>
+							
+							<input name="id" type="hidden" th:value="${assignment.id}">
+							
+							<button type="submit" class="transparent-button">
+								<img th:src="@{/images/delete.png}" class="imgSize">
+							</button>
+							
+						</form>
+					</td>
+					
+					
+		        </tr>
+		    </table>
+		</main>
+		
+		<footer>
+			<div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+	    
+    </div>	
+    
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Вход в аккаунт</h2>
+		<div class="navigation">
+			<a href="/">Назад</a>
+		</div>
+	</header>
+	
+	<div class="wrapper">	
+		<main>
+				
+			<form method="POST" th:action="@{/login}" id="loginForm" class="add-form">
+				
+				<span th:if="${param.error}" class="validationError">Невозможно войти.</span>
+				<span th:if="${param.error}" class="validationError">Проверьте имя пользователя или пароль.</span><br>
+			
+				<label for="username" class="titleModel">Имя пользователя</label>
+	       		<input type="text" id="username" name="username" placeholder="Введите имя пользователя" th:value="*{username}" ><br>
+	       		
+		        <label  for="password" class="titleModel">Пароль</label>
+		        <input type="password" id="password" name="password" placeholder="Введите пароль" th:value="*{password}" ><br>
+		        			
+				<p class="center-align"> Нет аккаута ?
+					<a th:href="@{/register}" style="text-decoration: underline;">Регистрация</a> по ссылке. 
+				</p><br>
+				
+			
+				<input type="submit" value="Войти" class="pressed-button"/>
+				
+			</form>
+	
+		</main>
+	    <footer>
+	        <div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+    
+    </div>	
+</body>
+
+</html>

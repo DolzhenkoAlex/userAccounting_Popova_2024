@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box; 
+	font-family: "Poppins", sans-serif;
+}
+
+section{
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-size: cover;
+	background-position: center;
+	margin: 0;
+}
+
+header{
+	position: relative;
+	top: 0;
+	width: 100%;
+	padding: 25px 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	backdrop-filter: blur(15px);
+}
+
+header .logo{
+	position: relative;
+	font-size: 22px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 800;
+	letter-spacing: 1px;
+	color: #002878;
+}
+
+
+header .navigation a{
+	color: #000;
+	text-decoration: none;
+	font-size: 22px;
+	font-weight: 500;
+	letter-spacing: 1px; 
+	padding: 5px 15px; 
+	border-radius: 20px;
+	transition: 0.3s;
+	transition-property: background;
+	color: #002878;
+}
+
+
+header .navigation a:not(:last-child){ 
+	margin-right: 30px;
+}
+
+header .navigation a:hover{
+  	color: white;
+  	transition: .2s;
+}
+
+
+.imgSize{
+	width: 40px; 
+	height: 40px;
+}
+
+.pressed-button {
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 40px;
+  margin: 10px 20px;
+  border-radius: 30px;
+  background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: white;
+  transition: .5s;
+}
+
+.pressed-button:hover {
+  box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
+  background-position: 0 0;
+}
+
+/* Стиль для основного содержимого страницы */
+main {
+  padding: 30px; /* Увеличиваем отступы */
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 5px solid #12689d;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+th, td {
+	border: 1px solid #d8d8d8;
+    padding: 8px;
+    text-align: left;
+}
+
+.center-align {
+    text-align: center;
+}
+
+th {
+	background-color: #c7e7ff;
+}
+
+tr:nth-child(even) {
+	background-color: #edf6fd;
+}
+
+tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+.button-container {
+	padding: 5px 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.button-container button {
+	width: 100%;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+        
+.button-container button {
+  border-radius: 25px; /* Добавляет закругление краев */
+  background-color: #45a049; /* Устанавливает зеленый цвет фона */
+  color: white; /* Устанавливает белый цвет текста */
+  padding: 10px 20px; /* Устанавливает отступы внутри кнопки */
+  border: none; /* Убирает границу кнопки */
+}
+
+
+a {
+  text-decoration: none; /* убираем подчеркивание ссылки */
+}
+
+
+.transparent-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+input, select {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.validationError {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.titleModel {
+  font-size: 20px;
+  color: #002878;
+}
+
+.edit-form {
+  display: block;
+}
+
+.add-form {
+    backdrop-filter: blur(15px);
+    min-width: 400px;
+    padding: 30px;
+    border: 2px solid #12689d;
+    border-radius: 15px;
+    background-color: #ffffff3b;
+}
+
+
+.footer-content {
+    text-align: center;
+    padding: 10px;
+    color: #002878;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    backdrop-filter: blur(30px);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+
+.container {
+	display: flex;
+}
+
+.nav {
+	display: flex;
+   	flex-direction: column;
+	padding-top: 20px; /* Add top padding */
+	backdrop-filter: blur(30px);
+}
+
+.nav a{
+	margin-bottom: 15px;
+	color: #000;
+	text-decoration: none;
+	font-size: 22px;
+	font-weight: 500;
+	letter-spacing: 1px; 
+	padding: 5px 15px; 
+	border-radius: 20px;
+	transition: 0.3s;
+	transition-property: background;
+	color: #002878;
+}
+
+
+.nav a:not(:last-child){ 
+	margin-right: 30px;
+}
+
+.nav a:hover{
+  	color: white;
+  	transition: .2s;
+}
+
+main {
+	flex: 1;
+}
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Новый пользователь</h2>
+		<div class="navigation">
+			<a href="/users">Назад</a>
+		</div>
+	</header>
+	
+	<div class="wrapper">	
+		<main>
+			<form th:action="@{/users/add}" th:object="${user}" method="POST" class="add-form">
+				
+				<label class="titleModel">Имя</label>
+				<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validationError"></span>
+	       		<input type="text" id="username" name="username" placeholder="Введите имя пользователя" th:value="*{username}" ><br>
+	       		
+		        <label class="titleModel">Пароль</label>
+		        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validationError"></span>
+		        <input type="password" id="password" name="password" placeholder="Введите пароль" th:value="*{password}" ><br>
+		        
+		       	<label class="titleModel">Повторите пароль</label>
+		        <input type="password" id="passwordRepeat" name="passwordRepeat" placeholder="Повторите пароль" th:value="${passwordRepeat}" ><br>
+		        
+		        <label class="titleModel">Email</label>
+		        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validationError"></span>
+		        <input type="text" id="email" name="email" placeholder="Введите электронную почту" th:value="*{email}" ><br>
+		        
+		        <label class="titleModel">Статус</label>
+		        <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="validationError"></span>
+		        <input type="text" id="status" name="status" placeholder="Введите статус" th:value="*{status}" ><br>
+		        
+		        <input type="submit" value="Добавить" class="pressed-button">
+		    </form>
+		</main>
+	    <footer>
+	        <div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+    
+    </div>	
+</body>
+
+</html>

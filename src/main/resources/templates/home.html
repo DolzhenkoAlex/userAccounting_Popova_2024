@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+	
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Учет пользователей</h2>
+		<div></div>
+	</header>
+	
+	<div class="wrapper">
+	
+		<div class="container">
+			<div class="nav">
+				<a href="users">Пользователи</a>
+				<a href="roles">Роли</a>
+				<a href="permitions">Права</a>
+				<a href="assignments">Назначения ролей</a>
+				<a href="rolespermitions">Назначения прав</a>
+			</div>
+		
+			<main>
+			
+				<div th:switch="${username}"> 
+					<div th:case="anonymousUser">
+						<form th:action="@{/login}" class="add-form">
+						
+							<label style="text-align: center;" class="titleModel">Для авторизации нажмите кнопку</label><br>
+		
+			        		<input type="submit" value="Войти" class="pressed-button" style="display: block; margin: 0 auto;">
+			        		
+			   	 		</form>
+					</div>
+					
+				  	<div th:case="*">
+				  	
+				  		<form th:action="@{/logout}" method="post" th:object="${user}" class="add-form">
+				  			
+				  			<label class="titleModel">Здравствуйте: [[${user.username}]] </label><br>
+			        
+			        		<label class="titleModel">Email: [[${user.email}]]</label><br>
+			        
+			        		<label class="titleModel">Статус: [[${user.status}]]</label><br>
+				  			
+				  			
+			        		<input type="submit" value="Выйти" class="pressed-button">
+			   	 		</form>
+				  	</div> 
+				</div>
+				
+			</main>
+		</div>
+		
+	    <footer>
+	        <div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+    
+    </div>
+</body>
+
+</html>

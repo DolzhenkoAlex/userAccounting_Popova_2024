@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Новая роль</h2>
+		<div class="navigation">
+			<a href="/roles">Назад</a>
+		</div>
+	</header>
+	
+	<div class="wrapper">	
+		<main>
+			<form th:action="@{/roles/add}" th:object="${role}" method="POST" class="add-form">
+			
+				<label class="titleModel">Название роли</label>
+				<span th:if="${#fields.hasErrors('nameRole')}" th:errors="*{nameRole}" class="validationError"></span>
+	       		<input type="text" id="nameRole" name="nameRole" placeholder="Введите название роли" th:value="*{nameRole}" ><br>
+				
+				<label class="titleModel">Описание</label>
+				<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="validationError"></span>
+	       		<input type="text" id="description" name="description" placeholder="Введите описание" th:value="*{description}" ><br>
+		        
+		        <input type="submit" value="Добавить" class="pressed-button">
+		    </form>
+		</main>
+	    <footer>
+	        <div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+    
+    </div>	
+</body>
+
+</html>

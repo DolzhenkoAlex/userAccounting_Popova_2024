@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Новое право</h2>
+		<div class="navigation">
+			<a href="/permitions">Назад</a>
+		</div>
+	</header>
+	
+	<div class="wrapper">	
+		<main>
+			<form th:action="@{/permitions/add}" th:object="${permition}" method="POST" class="add-form">
+			
+				<label class="titleModel">Название права</label>
+				<span th:if="${#fields.hasErrors('permitionName')}" th:errors="*{permitionName}" class="validationError"></span>
+	       		<input type="text" id="permitionName" name="permitionName" placeholder="Введите название права" th:value="*{permitionName}" ><br>
+				
+				<label class="titleModel">Описание</label>
+				<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="validationError"></span>
+	       		<input type="text" id="description" name="description" placeholder="Введите описание" th:value="*{description}" ><br>
+		        
+		        <label class="titleModel">Дата создания</label>
+		        <span th:if="${#fields.hasErrors('dateCreate')}" th:errors="*{dateCreate}" class="validationError"></span>
+	       		<input type="date" id="dateCreate" name="dateCreate" th:field="*{dateCreate}" ><br>
+		        
+		        <input type="submit" value="Добавить" class="pressed-button">
+		    </form>
+		</main>
+	    <footer>
+	        <div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+    
+    </div>	
+</body>
+
+</html>

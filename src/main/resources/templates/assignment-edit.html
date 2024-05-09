@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Учет пользователей</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	
+</head>
+
+<body th:style="'background-image: url(\'' + @{/images/background.jpg} + '\');
+	background-size: cover;
+    background-position: center;
+    background-attachment: fixed;'">
+
+	<header>
+		<a href="/">
+		    <img th:src="@{/images/logo.png}" width="60" height="60"/>
+		</a>
+		<h2 class="logo">Редактирование назначение роли</h2>
+		<div class="navigation">
+			<a href="/assignments">Назад</a>
+		</div>
+	</header>
+	
+	<div class="wrapper">
+	
+		<main>
+			<form th:action="@{/assignments/edit}" th:object="${assignment}" method="POST" class="add-form">
+			
+				<input name="id" type="hidden" th:value="*{id}">
+			
+				<label class="titleModel">Пользователь</label>
+				<span th:if="${#fields.hasErrors('user')}" th:errors="*{user}" class="validationError"></span>
+				<select th:field="*{user}" id="listUsers">
+					<option value="">— Выберите пользователя —</option>
+				    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+				</select>
+	
+				
+				<label class="titleModel">Роль</label>
+				<span th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="validationError"></span>
+				<select th:field="*{role}" id="listRoles">
+					<option value="">— Выберите роль —</option>
+				    <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.nameRole}"></option>
+				</select>
+		        
+		        <label class="titleModel">Дата создания</label>
+		        <span th:if="${#fields.hasErrors('dateCreate')}" th:errors="*{dateCreate}" class="validationError"></span>
+	       		<input type="date" id="dateCreate" name="dateCreate" th:field="*{dateCreate}" ><br>
+		        
+		        <input type="submit" value="Сохранить" class="pressed-button">
+		    </form>
+		</main>
+		
+	    <footer>
+	        <div class="footer-content">
+	            <p>Сделано студентом: Попова А.Е.</p>
+	            <p>&copy; 2024 Учет пользователей. Все права защищены.</p>
+	        </div>
+	    </footer>
+    
+    </div>	
+</body>
+
+</html>
